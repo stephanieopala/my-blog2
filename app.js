@@ -6,10 +6,12 @@ const dotenv = require('dotenv');
 const app = express();
 dotenv.config();
 
+const PORT = process.env.PORT || 5000;
+
 //connect to db
 const dbURI = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.1rycc.mongodb.net/steph-blog?retryWrites=true&w=majority`;
 mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true})
-.then(result => app.listen(3000))
+.then(result => app.listen(PORT))
 .catch(err => console.log(err));
 
 //register view engine
